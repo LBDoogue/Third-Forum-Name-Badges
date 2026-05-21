@@ -36,7 +36,7 @@
     .app-header p { font-weight: 300; opacity: 0.75; margin-top: 0.35rem; font-size: 0.95rem; position: relative; }
 
     .project-bar {
-      max-width: 900px; margin: 0 auto; padding: 0.75rem 1.5rem;
+      max-width: 1200px; margin: 0 auto; padding: 0.75rem 1.5rem;
       display: flex; align-items: center; gap: 0.5rem;
       border-bottom: 1px solid rgba(0,0,0,0.06);
     }
@@ -45,7 +45,7 @@
     .btn-project-load:hover { border-color: var(--coral); }
     .project-name { font-size: 0.8rem; color: var(--navy); opacity: 0.5; font-weight: 500; margin-left: 0.5rem; }
 
-    .controls { max-width: 900px; margin: 0 auto; padding: 1rem 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
+    .controls { max-width: 1200px; margin: 0 auto; padding: 1rem 1.5rem 0; display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: flex-end; }
     .field-group { display: flex; flex-direction: column; gap: 0.3rem; flex: 1; min-width: 180px; }
     .field-group label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--navy); opacity: 0.5; }
     .name-input, .event-input {
@@ -97,7 +97,7 @@
 
     /* Selection + Logo mode bars */
     .toolbar-row {
-      max-width: 900px; margin: 0.4rem auto 0; padding: 0.4rem 1.5rem;
+      max-width: 1200px; margin: 0.4rem auto 0; padding: 0.4rem 1.5rem;
       display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
     }
     .sel-btn {
@@ -121,7 +121,7 @@
 
     /* Per-badge logo picker */
     .badge-logo-picker {
-      max-width: 900px; margin: 0.2rem auto 0; padding: 0.4rem 1.5rem;
+      max-width: 1200px; margin: 0.2rem auto 0; padding: 0.4rem 1.5rem;
       display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;
       background: rgba(232,99,74,0.03); border-radius: 8px;
     }
@@ -130,12 +130,14 @@
     .logo-check-card label { display: flex; align-items: center; gap: 3px; font-size: 0.6rem; font-weight: 500; cursor: pointer; color: var(--navy); opacity: 0.6; }
     .logo-check-card input[type="checkbox"] { accent-color: var(--coral); width: 13px; height: 13px; }
 
-    .style-row { max-width: 900px; margin: 0.5rem auto 0; padding: 0 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .style-row { max-width: 1200px; margin: 0.5rem auto 0; padding: 0 1.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap; }
     .style-btn { padding: 0.45rem 0.9rem; border: 2px solid #ddd; border-radius: 8px; background: white; font-family: 'Outfit', sans-serif; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.15s; color: var(--navy); }
     .style-btn.active { border-color: var(--coral); background: rgba(232,99,74,0.08); color: var(--coral); }
+    .size-btn { padding: 0.4rem 0.75rem; border: 2px solid #ddd; border-radius: 8px; background: white; font-family: 'Outfit', sans-serif; font-size: 0.72rem; font-weight: 500; cursor: pointer; transition: all 0.15s; color: var(--navy); }
+    .size-btn.active { border-color: var(--sage); background: rgba(123,165,138,0.08); color: var(--sage); }
 
     .tag-preview-area {
-      max-width: 900px; margin: 1rem auto; padding: 0 1.5rem 2rem;
+      max-width: 1200px; margin: 1rem auto; padding: 0 1.5rem 2rem;
       display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.2rem;
     }
     .empty-state { grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; opacity: 0.35; }
@@ -178,54 +180,80 @@
 
   /* ── NAME TAG CARD ── */
   .name-tag {
-    width: 4.5in; height: 3.75in; border-radius: 12px; overflow: hidden;
+    width: var(--tag-w, 4.5in); height: var(--tag-h, 3.75in); border-radius: 12px; overflow: hidden;
     position: relative; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
     page-break-inside: avoid; break-inside: avoid;
+    font-size: calc(1rem * var(--tag-scale, 1));
   }
   .tag-logo-strip {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 50px;
-    display: flex; align-items: center; justify-content: center; gap: 12px; padding: 0 10px;
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3.2em;
+    display: flex; align-items: center; justify-content: center; gap: 0.75em; padding: 0 0.6em;
   }
-  .tag-logo-strip img { height: 32px; max-width: 80px; object-fit: contain; cursor: grab; user-select: none; }
+  .tag-logo-strip img { height: 2em; max-width: 5em; object-fit: contain; cursor: grab; user-select: none; }
   .tag-logo-strip img:active { cursor: grabbing; }
   .tag-logo-strip img.dragging { opacity: 0.5; }
   .tag-content { display: flex; flex-direction: column; align-items: center; transition: transform 0.15s ease; }
 
   /* Classic */
-  .name-tag.style-classic { background: white; border: 3px solid var(--navy); box-shadow: 0 4px 20px var(--shadow); }
-  .name-tag.style-classic .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 48px; background: var(--navy); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.81rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
-  .name-tag.style-classic .tag-hello { font-size: 0.6rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--navy); opacity: 0.35; }
-  .name-tag.style-classic .tag-name { font-family: 'DM Serif Display', serif; font-size: 2.4rem; color: var(--navy); line-height: 1.15; padding: 0 0.3in; word-break: break-word; }
-  .name-tag.style-classic .tag-matches-label { margin-top: 10px; font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--navy); opacity: 0.3; }
-  .name-tag.style-classic .tag-match-names { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--navy); opacity: 0.65; line-height: 1.4; padding: 0 0.3in; }
+  .name-tag.style-classic { background: var(--tag-bg, white); border: 3px solid var(--tag-accent, var(--navy)); box-shadow: 0 4px 20px var(--shadow); }
+  .name-tag.style-classic .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 3em; background: var(--tag-accent, var(--navy)); display: flex; align-items: center; justify-content: center; color: var(--tag-bg, white); --base-event-size: 0.81em; font-size: 0.81em; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .name-tag.style-classic .tag-hello { font-size: 0.6em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--tag-accent, var(--navy)); opacity: 0.35; }
+  .name-tag.style-classic .tag-name { font-family: 'DM Serif Display', serif; font-size: 2.4em; color: var(--tag-accent, var(--navy)); line-height: 1.15; padding: 0 0.15em; word-break: break-word; }
+  .name-tag.style-classic .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, var(--navy)); opacity: 0.3; }
+  .name-tag.style-classic .tag-match-names { font-family: 'DM Serif Display', serif; font-size: 1em; color: var(--tag-accent, var(--navy)); opacity: 0.65; line-height: 1.4; padding: 0 0.2em; }
 
   /* Coral */
-  .name-tag.style-coral { background: var(--coral); box-shadow: 0 4px 20px rgba(232,99,74,0.25); }
-  .name-tag.style-coral .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 44px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+  .name-tag.style-coral { background: var(--tag-accent, var(--coral)); box-shadow: 0 4px 20px rgba(232,99,74,0.25); }
+  .name-tag.style-coral .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 2.8em; display: flex; align-items: center; justify-content: center; color: var(--tag-bg, white); --base-event-size: 0.75em; font-size: 0.75em; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
   .name-tag.style-coral .tag-hello { display: none; }
-  .name-tag.style-coral .tag-name { font-family: 'Outfit', sans-serif; font-size: 2.5rem; font-weight: 700; color: white; margin-top: -4px; padding: 0 0.25in; word-break: break-word; }
-  .name-tag.style-coral .tag-matches-label { margin-top: 10px; font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: white; opacity: 0.45; }
-  .name-tag.style-coral .tag-match-names { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 500; color: white; opacity: 0.7; line-height: 1.4; padding: 0 0.25in; }
+  .name-tag.style-coral .tag-name { font-family: 'Outfit', sans-serif; font-size: 2.5em; font-weight: 700; color: var(--tag-bg, white); margin-top: -0.1em; padding: 0 0.12em; word-break: break-word; }
+  .name-tag.style-coral .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-bg, white); opacity: 0.45; }
+  .name-tag.style-coral .tag-match-names { font-family: 'Outfit', sans-serif; font-size: 1em; font-weight: 500; color: var(--tag-bg, white); opacity: 0.7; line-height: 1.4; padding: 0 0.12em; }
   .name-tag.style-coral::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 5px; background: rgba(255,255,255,0.25); }
 
   /* Minimal */
-  .name-tag.style-minimal { background: white; border: 1.5px solid #E0DDD8; box-shadow: 0 2px 12px var(--shadow); }
-  .name-tag.style-minimal .tag-topbar { position: absolute; top: 14px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; color: var(--navy); font-size: 0.69rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.35; }
+  .name-tag.style-minimal { background: var(--tag-bg, white); border: 1.5px solid #E0DDD8; box-shadow: 0 2px 12px var(--shadow); }
+  .name-tag.style-minimal .tag-topbar { position: absolute; top: 0.9em; left: 0; right: 0; display: flex; align-items: center; justify-content: center; color: var(--tag-accent, var(--navy)); --base-event-size: 0.69em; font-size: 0.69em; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; opacity: 0.35; }
   .name-tag.style-minimal .tag-hello { display: none; }
-  .name-tag.style-minimal .tag-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2.3rem; color: var(--navy); margin-top: -4px; padding: 0 0.25in; word-break: break-word; }
-  .name-tag.style-minimal .tag-matches-label { margin-top: 10px; font-size: 0.55rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--navy); opacity: 0.3; }
-  .name-tag.style-minimal .tag-match-names { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); opacity: 0.55; line-height: 1.4; padding: 0 0.25in; }
-  .name-tag.style-minimal::after { content: ''; position: absolute; bottom: 16px; left: 25%; right: 25%; height: 1.5px; background: var(--gold); opacity: 0.5; }
+  .name-tag.style-minimal .tag-name { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 2.3em; color: var(--tag-accent, var(--navy)); margin-top: -0.1em; padding: 0 0.12em; word-break: break-word; }
+  .name-tag.style-minimal .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, var(--navy)); opacity: 0.3; }
+  .name-tag.style-minimal .tag-match-names { font-family: 'Playfair Display', serif; font-size: 1em; color: var(--tag-accent, var(--navy)); opacity: 0.55; line-height: 1.4; padding: 0 0.12em; }
+  .name-tag.style-minimal::after { content: ''; position: absolute; bottom: 1em; left: 25%; right: 25%; height: 1.5px; background: var(--tag-accent, var(--gold)); opacity: 0.5; }
 
   /* Garden */
-  .name-tag.style-garden { background: #F1F7F3; border: 2px solid var(--sage); box-shadow: 0 4px 20px rgba(123,165,138,0.15); }
-  .name-tag.style-garden .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 42px; background: var(--sage); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
-  .name-tag.style-garden .tag-hello { font-size: 0.55rem; color: var(--sage); opacity: 0.6; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
-  .name-tag.style-garden .tag-name { font-family: 'DM Serif Display', serif; font-size: 2.3rem; color: var(--navy); padding: 0 0.25in; word-break: break-word; }
-  .name-tag.style-garden .tag-matches-label { margin-top: 10px; font-size: 0.55rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--sage); opacity: 0.6; }
-  .name-tag.style-garden .tag-match-names { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--navy); opacity: 0.6; line-height: 1.4; padding: 0 0.25in; }
-  .name-tag.style-garden::before { content: '\2743'; position: absolute; bottom: 10px; right: 14px; font-size: 1rem; opacity: 0.2; color: var(--sage); }
+  .name-tag.style-garden { background: var(--tag-bg, #F1F7F3); border: 2px solid var(--tag-accent, var(--sage)); box-shadow: 0 4px 20px rgba(123,165,138,0.15); }
+  .name-tag.style-garden .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 2.7em; background: var(--tag-accent, var(--sage)); display: flex; align-items: center; justify-content: center; color: white; --base-event-size: 0.75em; font-size: 0.75em; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+  .name-tag.style-garden .tag-hello { font-size: 0.55em; color: var(--tag-accent, var(--sage)); opacity: 0.6; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
+  .name-tag.style-garden .tag-name { font-family: 'DM Serif Display', serif; font-size: 2.3em; color: var(--tag-accent, var(--navy)); padding: 0 0.12em; word-break: break-word; }
+  .name-tag.style-garden .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, var(--sage)); opacity: 0.6; }
+  .name-tag.style-garden .tag-match-names { font-family: 'DM Serif Display', serif; font-size: 1em; color: var(--tag-accent, var(--navy)); opacity: 0.6; line-height: 1.4; padding: 0 0.12em; }
+  .name-tag.style-garden::before { content: '\2743'; position: absolute; bottom: 0.6em; right: 0.9em; font-size: 1em; opacity: 0.2; color: var(--tag-accent, var(--sage)); }
+
+  /* Midnight */
+  .name-tag.style-midnight { background: var(--tag-bg, #1a1a2e); border: none; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+  .name-tag.style-midnight .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 2.8em; display: flex; align-items: center; justify-content: center; color: var(--tag-accent, #e0c068); --base-event-size: 0.75em; font-size: 0.75em; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; }
+  .name-tag.style-midnight .tag-hello { font-size: 0.55em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.25); }
+  .name-tag.style-midnight .tag-name { font-family: 'Playfair Display', serif; font-size: 2.4em; font-weight: 700; color: white; line-height: 1.15; padding: 0 0.15em; word-break: break-word; }
+  .name-tag.style-midnight .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, #e0c068); opacity: 0.6; }
+  .name-tag.style-midnight .tag-match-names { font-family: 'Playfair Display', serif; font-size: 1em; color: rgba(255,255,255,0.6); line-height: 1.4; padding: 0 0.12em; }
+  .name-tag.style-midnight::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--tag-accent, #e0c068), transparent); }
+
+  /* Ocean */
+  .name-tag.style-ocean { background: var(--tag-bg, linear-gradient(135deg, #0f3460 0%, #16537e 100%)); border: none; box-shadow: 0 4px 20px rgba(15,52,96,0.3); }
+  .name-tag.style-ocean .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 2.8em; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.8); --base-event-size: 0.75em; font-size: 0.75em; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+  .name-tag.style-ocean .tag-hello { font-size: 0.55em; font-weight: 400; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(255,255,255,0.3); }
+  .name-tag.style-ocean .tag-name { font-family: 'DM Serif Display', serif; font-size: 2.4em; color: white; line-height: 1.15; padding: 0 0.15em; word-break: break-word; }
+  .name-tag.style-ocean .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, #64b5f6); opacity: 0.7; }
+  .name-tag.style-ocean .tag-match-names { font-family: 'DM Serif Display', serif; font-size: 1em; color: rgba(255,255,255,0.65); line-height: 1.4; padding: 0 0.12em; }
+
+  /* Blush */
+  .name-tag.style-blush { background: var(--tag-bg, #fef0f0); border: 2px solid var(--tag-accent, #d4838f); box-shadow: 0 4px 20px rgba(212,131,143,0.15); }
+  .name-tag.style-blush .tag-topbar { position: absolute; top: 0; left: 0; right: 0; height: 2.8em; background: var(--tag-accent, #d4838f); display: flex; align-items: center; justify-content: center; color: white; --base-event-size: 0.75em; font-size: 0.75em; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+  .name-tag.style-blush .tag-hello { font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; color: var(--tag-accent, #d4838f); opacity: 0.4; }
+  .name-tag.style-blush .tag-name { font-family: 'Playfair Display', serif; font-size: 2.3em; font-weight: 700; color: #3d2c2c; line-height: 1.15; padding: 0 0.15em; word-break: break-word; }
+  .name-tag.style-blush .tag-matches-label { margin-top: 0.6em; font-size: 0.55em; font-weight: 600; text-transform: uppercase; letter-spacing: 0.15em; color: var(--tag-accent, #d4838f); opacity: 0.5; }
+  .name-tag.style-blush .tag-match-names { font-family: 'Playfair Display', serif; font-size: 1em; color: #3d2c2c; opacity: 0.6; line-height: 1.4; padding: 0 0.12em; }
 
   /* ── PRINT ── */
   @media print {
@@ -238,7 +266,7 @@
     .tag-actions, .tag-select-wrap { display: none !important; }
     .tag-preview-area {
       max-width: 100%; padding: 0; margin: 0;
-      display: grid; grid-template-columns: repeat(2, 4.5in); grid-auto-rows: 3.75in;
+      display: grid; grid-template-columns: repeat(2, var(--tag-w, 4.5in)); grid-auto-rows: var(--tag-h, 3.75in);
       gap: 0.25in; justify-content: center;
     }
     .name-tag { box-shadow: none !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -321,6 +349,28 @@
   <button class="style-btn" onclick="setStyle('coral',this)">Coral Bold</button>
   <button class="style-btn" onclick="setStyle('minimal',this)">Minimal</button>
   <button class="style-btn" onclick="setStyle('garden',this)">Garden</button>
+  <button class="style-btn" onclick="setStyle('midnight',this)">Midnight</button>
+  <button class="style-btn" onclick="setStyle('ocean',this)">Ocean</button>
+  <button class="style-btn" onclick="setStyle('blush',this)">Blush</button>
+</div>
+
+<div class="style-row no-print" style="margin-top:0.3rem;">
+  <span style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;opacity:0.4;align-self:center;">Tag Size:</span>
+  <button class="size-btn active" onclick="setTagSize('4.5x3.75',this)">4.5 × 3.75"</button>
+  <button class="size-btn" onclick="setTagSize('4x3',this)">4 × 3"</button>
+  <button class="size-btn" onclick="setTagSize('5x4',this)">5 × 4"</button>
+  <button class="size-btn" onclick="setTagSize('avery8395',this)">2⅓ × 3⅜" (Avery 8395)</button>
+</div>
+
+<div class="style-row no-print" style="margin-top:0.3rem;">
+  <span style="font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;opacity:0.4;align-self:center;">Colors:</span>
+  <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.75rem;font-weight:500;cursor:pointer;">
+    Accent <input type="color" id="accentColorPicker" value="#1B2A4A" oninput="setTagColors()" style="width:28px;height:22px;border:1.5px solid #ddd;border-radius:4px;cursor:pointer;padding:0;" />
+  </label>
+  <label style="display:flex;align-items:center;gap:0.3rem;font-size:0.75rem;font-weight:500;cursor:pointer;">
+    Background <input type="color" id="bgColorPicker" value="#ffffff" oninput="setTagColors()" style="width:28px;height:22px;border:1.5px solid #ddd;border-radius:4px;cursor:pointer;padding:0;" />
+  </label>
+  <button class="sel-btn" onclick="resetTagColors()">Reset Colors</button>
 </div>
 
 <div class="controls no-print" style="padding-top: 0.3rem;">
@@ -331,6 +381,19 @@
       <input type="range" id="contentOffsetSlider" min="-60" max="30" value="0" step="2" style="flex:1;accent-color:var(--coral);" oninput="setContentOffset(this.value)" />
       <span style="font-size:0.7rem;opacity:0.4;">Lower</span>
     </div>
+  </div>
+  <div class="field-group" style="min-width:0; flex:none; max-width:220px;">
+    <label>Match Label</label>
+    <input type="text" class="name-input" id="matchLabelInput" value="matched with" placeholder="e.g. Company, Job Title" style="font-size:0.85rem;padding:0.5rem 0.7rem;" oninput="renderTags()" />
+  </div>
+  <div class="field-group" style="min-width:0; flex:none; max-width:240px;">
+    <label>Event Name Size</label>
+    <div style="display:flex;align-items:center;gap:0.6rem;">
+      <span style="font-size:0.7rem;opacity:0.4;">Smaller</span>
+      <input type="range" id="eventFontSlider" min="50" max="200" value="100" step="5" style="flex:1;accent-color:var(--coral);" oninput="setEventFontSize(this.value)" />
+      <span style="font-size:0.7rem;opacity:0.4;">Larger</span>
+    </div>
+    <span id="eventFontLabel" style="font-size:0.5rem;opacity:0.4;font-weight:500;text-align:center;">100%</span>
   </div>
 </div>
 
@@ -405,6 +468,17 @@ let savedPresets = [];
 let logoMode = 'global';
 let editingIndex = -1;
 let matchMode = 'all'; // 'all', 'none', 'individual'
+let eventFontScale = 1;
+
+// Tag size presets: width, height (inches), scale factor relative to 4.5x3.75 base,
+// print columns, print page orientation, print margins
+const TAG_SIZES = {
+  '4.5x3.75': { w: 4.5, h: 3.75, scale: 1, cols: 2, orient: 'landscape', margin: '0.5in' },
+  '4x3':      { w: 4, h: 3, scale: 0.8, cols: 2, orient: 'landscape', margin: '0.5in' },
+  '5x4':      { w: 5, h: 4, scale: 1.067, cols: 2, orient: 'landscape', margin: '0.25in' },
+  'avery8395': { w: 3.375, h: 2.333, scale: 0.622, cols: 2, orient: 'portrait', margin: '0.5in 0.5in 0.5in 0.75in' }
+};
+let currentTagSize = '4.5x3.75';
 
 const nameInput = document.getElementById('nameInput');
 const match1Input = document.getElementById('match1Input');
@@ -414,6 +488,7 @@ const tagArea = document.getElementById('tagArea');
 const logoThumbs = document.getElementById('logoThumbs');
 const presetNameInput = document.getElementById('presetNameInput');
 const savedPresetsEl = document.getElementById('savedPresets');
+const matchLabelInput = document.getElementById('matchLabelInput');
 
 [nameInput, match1Input, match2Input].forEach(el => el.addEventListener('keydown', e => { if (e.key === 'Enter') addName(); }));
 eventInput.addEventListener('input', renderTags);
@@ -540,6 +615,80 @@ function setLogoScale(id, val) {
 }
 function setContentOffset(val) { contentOffset = parseInt(val); document.querySelectorAll('.tag-content').forEach(el => el.style.transform = `translateY(${contentOffset}px)`); }
 
+function setEventFontSize(val) {
+  eventFontScale = parseInt(val) / 100;
+  document.getElementById('eventFontLabel').textContent = val + '%';
+  document.querySelectorAll('.tag-topbar').forEach(el => el.style.fontSize = `calc(var(--base-event-size) * ${eventFontScale})`);
+}
+
+function setTagSize(sizeKey, btn) {
+  currentTagSize = sizeKey;
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  applyTagSize();
+  renderTags();
+}
+
+function applyTagSize() {
+  const sz = TAG_SIZES[currentTagSize];
+  const scale = sz.scale;
+
+  const root = document.documentElement;
+  root.style.setProperty('--tag-w', sz.w + 'in');
+  root.style.setProperty('--tag-h', sz.h + 'in');
+  root.style.setProperty('--tag-scale', scale);
+
+  let printSheet = document.getElementById('dynamicPrintStyle');
+  if (!printSheet) {
+    printSheet = document.createElement('style');
+    printSheet.id = 'dynamicPrintStyle';
+    document.head.appendChild(printSheet);
+  }
+
+  let gridRows = `grid-template-columns: repeat(${sz.cols}, ${sz.w}in); grid-auto-rows: ${sz.h}in;`;
+
+  printSheet.textContent = `
+    @media print {
+      @page { size: letter ${sz.orient}; margin: ${sz.margin}; }
+      .tag-preview-area { ${gridRows} gap: ${currentTagSize === 'avery8395' ? '0.15in' : '0.25in'}; }
+    }
+  `;
+
+  const minCol = Math.min(sz.w * 96, 500);
+  tagArea.style.gridTemplateColumns = `repeat(auto-fill, minmax(${minCol}px, 1fr))`;
+}
+
+// ── Color customization ──
+let customAccent = null;
+let customBg = null;
+
+function setTagColors() {
+  customAccent = document.getElementById('accentColorPicker').value;
+  customBg = document.getElementById('bgColorPicker').value;
+  document.documentElement.style.setProperty('--tag-accent', customAccent);
+  document.documentElement.style.setProperty('--tag-bg', customBg);
+}
+
+function resetTagColors() {
+  customAccent = null;
+  customBg = null;
+  document.documentElement.style.removeProperty('--tag-accent');
+  document.documentElement.style.removeProperty('--tag-bg');
+  // Reset pickers to style defaults
+  const defaults = { classic:'#1B2A4A', coral:'#E8634A', minimal:'#1B2A4A', garden:'#7BA58A', midnight:'#e0c068', ocean:'#64b5f6', blush:'#d4838f' };
+  const bgDefaults = { classic:'#ffffff', coral:'#E8634A', minimal:'#ffffff', garden:'#F1F7F3', midnight:'#1a1a2e', ocean:'#0f3460', blush:'#fef0f0' };
+  document.getElementById('accentColorPicker').value = defaults[currentStyle] || '#1B2A4A';
+  document.getElementById('bgColorPicker').value = bgDefaults[currentStyle] || '#ffffff';
+}
+
+function updateColorPickersForStyle() {
+  if (customAccent || customBg) return; // Don't override custom colors
+  const defaults = { classic:'#1B2A4A', coral:'#E8634A', minimal:'#1B2A4A', garden:'#7BA58A', midnight:'#e0c068', ocean:'#64b5f6', blush:'#d4838f' };
+  const bgDefaults = { classic:'#ffffff', coral:'#E8634A', minimal:'#ffffff', garden:'#F1F7F3', midnight:'#1a1a2e', ocean:'#0f3460', blush:'#fef0f0' };
+  document.getElementById('accentColorPicker').value = defaults[currentStyle] || '#1B2A4A';
+  document.getElementById('bgColorPicker').value = bgDefaults[currentStyle] || '#ffffff';
+}
+
 function setMatchMode(mode, btn) {
   matchMode = mode;
   document.querySelectorAll('#matchModeToggle button').forEach(b => b.classList.remove('active'));
@@ -575,7 +724,7 @@ function setLogoScaleFromInput(id, val) {
 }
 
 // ── Style ──
-function setStyle(s, btn) { currentStyle = s; document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); renderTags(); }
+function setStyle(s, btn) { currentStyle = s; document.querySelectorAll('.style-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); updateColorPickersForStyle(); renderTags(); }
 
 // ── Presets ──
 function savePreset() {
@@ -616,6 +765,8 @@ function renderPresets() {
 function saveProject() {
   const ev = eventInput.value.trim();
   const proj = { _type:'nametag_project', _version:2, eventName:ev, style:currentStyle, contentOffset, logoMode, matchMode,
+    matchLabel: matchLabelInput.value.trim(), eventFontScale, tagSize: currentTagSize,
+    customAccent, customBg,
     entries: entries.map(e => ({name:e.name,match1:e.match1,match2:e.match2,logoOverrides:e.logoOverrides,showMatches:e.showMatches})),
     logos: logos.map(l => ({src:l.src,scale:l.scale||1,x:l.x,y:l.y})),
     presets: savedPresets };
@@ -633,9 +784,26 @@ function loadProject(input) {
     eventInput.value=p.eventName||'';
     currentStyle=p.style||'classic';
     document.querySelectorAll('.style-btn').forEach(b=>b.classList.remove('active'));
-    const sm={classic:0,coral:1,minimal:2,garden:3}; const btns=document.querySelectorAll('.style-btn');
+    const sm={classic:0,coral:1,minimal:2,garden:3,midnight:4,ocean:5,blush:6}; const btns=document.querySelectorAll('.style-btn');
     if(btns[sm[currentStyle]])btns[sm[currentStyle]].classList.add('active');
+    // Restore colors
+    customAccent=p.customAccent||null; customBg=p.customBg||null;
+    if(customAccent){document.documentElement.style.setProperty('--tag-accent',customAccent);document.getElementById('accentColorPicker').value=customAccent;}
+    else{document.documentElement.style.removeProperty('--tag-accent');}
+    if(customBg){document.documentElement.style.setProperty('--tag-bg',customBg);document.getElementById('bgColorPicker').value=customBg;}
+    else{document.documentElement.style.removeProperty('--tag-bg');}
+    if(!customAccent&&!customBg)updateColorPickersForStyle();
     contentOffset=p.contentOffset||0; document.getElementById('contentOffsetSlider').value=contentOffset;
+    matchLabelInput.value=p.matchLabel||'matched with';
+    eventFontScale=p.eventFontScale||1;
+    document.getElementById('eventFontSlider').value=Math.round(eventFontScale*100);
+    document.getElementById('eventFontLabel').textContent=Math.round(eventFontScale*100)+'%';
+    currentTagSize=p.tagSize||'4.5x3.75';
+    document.querySelectorAll('.size-btn').forEach(b=>b.classList.remove('active'));
+    const sizeMap={'4.5x3.75':0,'4x3':1,'5x4':2,'avery8395':3};
+    const sizeBtns=document.querySelectorAll('.size-btn');
+    if(sizeBtns[sizeMap[currentTagSize]])sizeBtns[sizeMap[currentTagSize]].classList.add('active');
+    applyTagSize();
     logoMode=p.logoMode||'global';
     matchMode=p.matchMode||'all';
     // Restore match mode buttons
@@ -703,12 +871,13 @@ function endDrag(){
 // ── Render ──
 function renderTags(){
   const ev=eventInput.value.trim()||'';
+  const mLabel=matchLabelInput.value.trim()||'matched with';
   if(!entries.length){ tagArea.innerHTML='<div class="empty-state"><div class="icon">🏷️</div><p>Add names above to generate tags</p></div>'; return; }
   tagArea.innerHTML=entries.map((entry,i)=>{
     const ml=[entry.match1,entry.match2].filter(Boolean);
     let showM = matchMode === 'all';
     if (matchMode === 'individual') showM = entry.showMatches === null ? false : entry.showMatches;
-    const mh=(showM && ml.length)?`<div class="tag-matches-label">matched with</div><div class="tag-match-names">${ml.map(m=>esc(m)).join(' &nbsp;·&nbsp; ')}</div>`:'';
+    const mh=(showM && ml.length)?`<div class="tag-matches-label">${esc(mLabel)}</div><div class="tag-match-names">${ml.map(m=>esc(m)).join(' &nbsp;·&nbsp; ')}</div>`:'';
     let bl=logos;
     if(logoMode==='individual'&&entry.logoOverrides!==null) bl=logos.filter(l=>entry.logoOverrides.includes(l.id));
     const lh=bl.length?`<div class="tag-logo-strip">${bl.map(l=>{
@@ -716,6 +885,7 @@ function renderTags(){
       const ps=l.x!==undefined?`position:absolute;left:${l.x}px;top:${l.y}px;margin:0;`:'';
       return `<img src="${l.src}" data-logo-id="${l.id}" draggable="false" style="height:${h}px;max-width:${w}px;${ps}" />`;
     }).join('')}</div>`:'';
+    const evFontStyle=eventFontScale!==1?`font-size:calc(var(--base-event-size) * ${eventFontScale})`:'';
     return `<div class="tag-wrapper ${entry.selected?'selected':''}">
       <div class="tag-select-wrap no-print"><input type="checkbox" ${entry.selected?'checked':''} onchange="toggleSelect(${i})" title="Select" /></div>
       <div class="tag-actions no-print">
@@ -723,7 +893,7 @@ function renderTags(){
         <button class="tag-action-btn" onclick="removeName(${i})" title="Remove">✕</button>
       </div>
       <div class="name-tag style-${currentStyle}">
-        <div class="tag-topbar">${ev||'Your Event'}</div>
+        <div class="tag-topbar" style="${evFontStyle}">${ev||'Your Event'}</div>
         <div class="tag-content" style="transform:translateY(${contentOffset}px);">
           <div class="tag-hello">my name is</div>
           <div class="tag-name">${esc(entry.name)}</div>${mh}
